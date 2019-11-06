@@ -7,20 +7,15 @@ import { UserService } from '../user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username:String;
-  password:String;
+  username:string;
+  password:string;
   error_login:String;
   constructor(private userService:UserService) { }
 
   ngOnInit() {
   }
-  send(){
-    let obj={
-      email:this.username,
-      password:this.password
-    };
-    console.log(obj);
-    this.userService.login(obj);
+  send(){   
+    this.userService.login(this.username,this.password);
     
     
 
