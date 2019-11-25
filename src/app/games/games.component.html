@@ -1,0 +1,69 @@
+<!--<div class ="clr-row">
+<div class="clr-col-4">
+<clr-tree-node [clrExpanded]="true">
+    Games
+     
+    <clr-tree-node *ngFor="let game of listGames">
+        <a [routerLink]="['./game']"
+           class="clr-treenode-link"
+           >{{game.id}} - {{game.created}}</a>
+    </clr-tree-node>
+    
+
+    
+</clr-tree-node>
+</div>
+<div class="clr-col-6">
+        <router-outlet></router-outlet>
+
+</div>
+</div>-->
+<clr-stack-view>
+    <clr-stack-header>
+        Games
+        <!--<button class="stack-action btn btn-sm btn-link" (click)="resetChildren()" type="button">Reset</button>-->
+    </clr-stack-header>
+
+    <clr-stack-block #lazyBlock [clrSbExpandable]="true" (clrSbExpandedChange)="fetchChildren()" *ngFor="let game of listGames">
+        <clr-stack-label>{{game.id}}</clr-stack-label>
+        <clr-stack-content>{{game.created}}</clr-stack-content>
+
+        <clr-stack-block *ngIf="game.length == 0">
+            <clr-spinner clrAssertive clrInline>
+              Loading...
+            </clr-spinner>
+        </clr-stack-block>
+
+        <clr-stack-block *ngFor="let gameplayer of game.gamePlayers">
+            <clr-stack-label>{{gameplayer.player.email}}</clr-stack-label>
+        </clr-stack-block>
+        <clr-stack-block>
+            <clr-stack-label><button 
+                class="stack-action btn btn-sm btn-link" 
+                type="button">Join</button></clr-stack-label>
+        </clr-stack-block>
+    </clr-stack-block>
+
+   
+</clr-stack-view>
+<table class="table">
+        <thead>
+            <tr>   
+                <th>Player</th>
+                <th>Total score</th>
+                <th>Total wins</th>
+                <th>Total losses</th>
+                <th>Total ties</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listLeaderboard">
+                <td>{{item.player}}</td>
+                <td>{{item.leaderBoard.totalScore}}</td>
+                <td>{{item.leaderBoard.totalWins}}</td>
+                <td>{{item.leaderBoard.totalLosses}}</td>
+                <td>{{item.leaderBoard.totalTies}}</td>
+            </tr>
+            
+        </tbody>
+    </table>
