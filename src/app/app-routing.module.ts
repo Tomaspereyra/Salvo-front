@@ -14,11 +14,12 @@ const routes: Routes = [
   path:"grid",component:GridComponent
 },
 {
-  path:"games",component:GamesComponent,
-  children:[{
-    path:'game',component:GameComponent
-  }]
-}];
+  path:"games",component:GamesComponent},
+
+{
+  path:'game/:id',component:GameComponent
+}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

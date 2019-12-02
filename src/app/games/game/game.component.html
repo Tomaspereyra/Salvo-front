@@ -2,20 +2,25 @@
     <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
         <div class="card">
             <div class="card-header">
-                Game
+                Game {{game.id}}
             </div>
             <div class="card-block">
                 <div class="card-title">
-                    Player 1 vs Player 2
+                   Title
                 </div>
                 <div class="card-text">
-                    11/20/2019
+                    {{game.created}}
+
                 </div>
             </div>
+
+            <ul class="list-group" *ngFor="let gamePlayer of  game.gamePlayers" >
+                    <li class="list-group-item">{{gamePlayer.player.email}}</li>                    
+                </ul>
             <div class="card-footer">
-                <button class="btn btn-sm btn-link">Join</button>
-                <button class="btn btn-sm btn-link">Footer Action 2</button>
+                <button class="btn btn-sm btn-link">Play</button>
             </div>
         </div>
     </div>
 </div>
+<app-grid></app-grid>

@@ -3,9 +3,9 @@ import { Player } from './player';
 
 export class GamePlayer {
     public id:string;
-    public player:Array<Player>;
+    public player:Player;
 
-    constructor(id:string,player:Array<Player>){
+    constructor(id:string,player:Player){
         this.id = id;
         this.player = player;
     }

@@ -13,6 +13,10 @@ import { GridComponent } from './grid/grid.component';
 import { GamesComponent } from './games/games.component';
 import { GameComponent } from './games/game/game.component';
 import { HeaderComponent } from './header/header.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+
 
 @NgModule({
   declarations: [
@@ -29,7 +33,9 @@ import { HeaderComponent } from './header/header.component';
     ClarityModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DragDropModule,
+    MatSnackBarModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
