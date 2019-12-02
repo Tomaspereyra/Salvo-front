@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LocalStorageService } from './local-storage.service';
+import { Game } from '../model/game';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +47,7 @@ export class UserService {
 
   createGame(){
     const headers = this.getHeader();
-    return this.http.post("http://localhost:8080/api/createGame",{headers});
+    return this.http.post<Game>("http://localhost:8080/api/createGame",null,{headers});
   }
   joinGame(id:string){
     const headers = this.getHeader();

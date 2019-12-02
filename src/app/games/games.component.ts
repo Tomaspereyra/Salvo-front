@@ -49,6 +49,8 @@ export class GamesComponent implements OnInit {
   create(){
     this.userService.createGame().subscribe(res=>{
       console.log(res);
+      this.router.navigate(['game',res.id]);
+
     },err=>{
       console.log(err);
     });
